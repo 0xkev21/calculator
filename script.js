@@ -52,6 +52,17 @@ function displayOperator() {
     operator = this.id;
 }
 
+function clear() {
+    firstNumber = null;
+    operator = '';
+    secondNumber = null;
+    displayFirstValue.textContent = '';
+    operatorDisplay.textContent = '';
+    displaySecondValue.textContent = '';
+}
+
+document.getElementById('clear').addEventListener('click', clear);
+
 const numbers = document.querySelectorAll('.number');
 numbers.forEach(number => number.addEventListener('click', displayNumber));
 
