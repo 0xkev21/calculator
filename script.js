@@ -13,22 +13,49 @@ const calculator = {
     }
 }
 
-let firstNumber = 0,
-operator = '+',
-secondNumber = 0;
+let firstNumber = null,
+operator = '',
+secondNumber = null;
+
+const displayFirstValue = document.getElementById('firstValue');
+const displaySecondValue = document.getElementById('secondValue');
+const operatorDisplay = document.getElementById('operator');
 
 function operate(a, op, b) {
     return calculator[op](a,b);
 }
 
-function display(e) {
-    const displayFirstValue = document.getElementById('firstValue');
-    displayFirstValue.textContent += this.textContent;
-    firstNumber = displayFirstValue.textContent;
-    console.log(firstNumber);
+function displayNumber() {
+    if (operator !== '') {
+        displaySecondValue.textContent += this.textContent;
+        secondNumber = +(displaySecondValue.textContent);
+        
+    } else {    
+        displayFirstValue.textContent += this.textContent;
+        firstNumber = +(displayFirstValue.textContent);
+    }
+}
+
+function displayOperator() {
+    if(firstNumber !== null && operator !=='' && secondNumber !== null) {
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        displayFirstValue.textContent = firstNumber;
+        secondNumber = null;
+        displaySecondValue.textContent = '';
+    }
+    if(this.textContent !== '=') {
+        operatorDisplay.textContent = this.textContent;
+        
+    } else {
+        operatorDisplay.textContent = '';
+    }
+    operator = this.id;
 }
 
 const numbers = document.querySelectorAll('.number');
-numbers.forEach(number => number.addEventListener('click', display));
+numbers.forEach(number => number.addEventListener('click', displayNumber));
 
-console.log(operate(firstNumber, operator, secondNumber));
+const operators = document.querySelectorAll('.operator');
+operators.forEach(op => op.addEventListener('click', displayOperator));
+
+// console.log(operate(firstNumber, operator, secondNumber));
