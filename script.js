@@ -9,7 +9,13 @@ const calculator = {
         return a * b;
     },
     '/': function(a, b) {
-        return a / b;
+        if(b === 0) {
+            alert("Don't divide with zero");
+            return null;
+        }
+        else {
+            return a / b;
+        }
     }
 }
 
@@ -39,6 +45,7 @@ function displayNumber() {
 function displayOperator() {
     if(firstNumber !== null && operator !=='' && secondNumber !== null) {
         firstNumber = operate(firstNumber, operator, secondNumber);
+        if(firstNumber === null) { clear(); return; };
         displayFirstValue.textContent = firstNumber;
         secondNumber = null;
         displaySecondValue.textContent = '';
