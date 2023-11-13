@@ -26,6 +26,7 @@ secondNumber = null;
 const displayFirstValue = document.getElementById('firstValue');
 const displaySecondValue = document.getElementById('secondValue');
 const operatorDisplay = document.getElementById('operator');
+const modeButton = document.querySelector('.mode-button');
 
 function getPrecision(number) {
     const decimalPart = (number.toString().split('.')[1] || '').length;
@@ -112,3 +113,7 @@ numbers.forEach(number => number.addEventListener('click', displayNumber));
 
 const operators = document.querySelectorAll('.operator');
 operators.forEach(op => op.addEventListener('click', displayOperator));
+
+modeButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+})
