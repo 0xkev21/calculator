@@ -33,10 +33,20 @@ function operate(a, op, b) {
 
 function displayNumber() {
     if (operator !== '') {
+        if(this.textContent === '.') {
+            if(displaySecondValue.textContent.includes('.')) {
+                return;
+            }
+        }
         displaySecondValue.textContent += this.textContent;
         secondNumber = +(displaySecondValue.textContent);
         
-    } else {    
+    } else {
+        if(this.textContent === '.') {
+            if(displayFirstValue.textContent.includes('.')) {
+                return;
+            }
+        }
         displayFirstValue.textContent += this.textContent;
         firstNumber = +(displayFirstValue.textContent);
     }
