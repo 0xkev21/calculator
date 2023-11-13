@@ -27,8 +27,19 @@ const displayFirstValue = document.getElementById('firstValue');
 const displaySecondValue = document.getElementById('secondValue');
 const operatorDisplay = document.getElementById('operator');
 
+function getPrecision(number) {
+    const decimalPart = (number.toString().split('.')[1] || '').length;
+    return decimalPart;
+}
+
+function roundToPrecision(number, precision) {
+    const factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
+}
+
 function operate(a, op, b) {
-    return calculator[op](a,b);
+    const precision = Math.max(getPrecision(a), getPrecision(b));
+    return roundToPrecision(calculator[op](a,b), precision);
 }
 
 function displayNumber() {
