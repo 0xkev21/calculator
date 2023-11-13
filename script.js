@@ -60,13 +60,24 @@ function clear() {
     operatorDisplay.textContent = '';
     displaySecondValue.textContent = '';
 }
-
 document.getElementById('clear').addEventListener('click', clear);
+
+function deleteFunc() {
+    if(displaySecondValue.textContent.length > 0) {
+        displaySecondValue.textContent = displaySecondValue.textContent.slice(0, -1);
+        secondNumber = +(displaySecondValue.textContent);
+    } else if(operatorDisplay.textContent !== '') {
+        operatorDisplay.textContent = '';
+        operator = '';
+    } else if(displayFirstValue.textContent.length > 0) {
+        displayFirstValue.textContent = displayFirstValue.textContent.slice(0, -1);
+        firstNumber = +(displayFirstValue.textContent);
+    }
+}
+document.getElementById('delete').addEventListener('click', deleteFunc);
 
 const numbers = document.querySelectorAll('.number');
 numbers.forEach(number => number.addEventListener('click', displayNumber));
 
 const operators = document.querySelectorAll('.operator');
 operators.forEach(op => op.addEventListener('click', displayOperator));
-
-// console.log(operate(firstNumber, operator, secondNumber));
