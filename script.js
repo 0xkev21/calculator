@@ -39,7 +39,10 @@ function roundToPrecision(number, precision) {
 
 function operate(a, op, b) {
     const precision = Math.max(getPrecision(a), getPrecision(b));
-    return roundToPrecision(calculator[op](a,b), precision);
+    if (op !== '/') {
+        return roundToPrecision(calculator[op](a,b), precision);
+    }
+    return calculator[op](a,b);
 }
 
 function displayNumber() {
