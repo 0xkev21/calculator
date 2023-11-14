@@ -20,6 +20,8 @@
     --secondary-color: #A4C8FF;
     --width: 358px;
     --button-left: 2px;
+    --primary-hover-color: #a5a5a5;
+    --secondary-hover-color: #6c9feb;
 }
 
 body.dark {
@@ -28,6 +30,8 @@ body.dark {
     --text-color: #ffffff;
     --secondary-color: #05295F;
     --button-left: calc(72px - 30px - 2px);
+    --primary-hover-color: #202020;
+    --secondary-hover-color: #094caf;
 }
 
 body {
@@ -129,17 +133,27 @@ h1 {
     width: 100%;
     grid-column-start: 1;
     grid-column-end: 3;
+    height: 60px;
 }
 
 #delete {
     width: 100%;
     grid-column-start: 3;
     grid-column-end: 5;
+    height: 60px;
 }
 
 .calculator button:not(.number) {
     background-color: var(--secondary-color);
     transition: 1s ease;
+}
+.calculator button:not(.number):hover {
+    background-color: var(--secondary-hover-color);
+    transition: 300ms;
+}
+.calculator button.number:hover {
+    background-color: var(--primary-hover-color);
+    transition: 300ms;
 }
 
 .calculator > .operator {
