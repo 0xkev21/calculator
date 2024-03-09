@@ -1,4 +1,4 @@
-# Etch a Sketch
+# Simple Calculator
 This is just a simple calculator where you can calculate things in advance and make things workout 😜
 
 - You can Add Numbers
